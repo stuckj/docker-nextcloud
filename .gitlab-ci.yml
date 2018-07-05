@@ -11,10 +11,6 @@ before_script:
 build-master:
   stage: build
   script:
-    - docker build --pull -f Dockerfile.11.0 -t "$CI_REGISTRY_IMAGE:11.0" .
-    - docker push "$CI_REGISTRY_IMAGE:11.0"
-    - docker build --pull -f Dockerfile.12.0 -t "$CI_REGISTRY_IMAGE:12.0" .
-    - docker push "$CI_REGISTRY_IMAGE:12.0"
     - docker build --pull -f Dockerfile.13.0 -t "$CI_REGISTRY_IMAGE:13.0" .
     - docker push "$CI_REGISTRY_IMAGE:13.0"
     - docker build --pull -f Dockerfile.daily -t "$CI_REGISTRY_IMAGE:daily" .
@@ -25,10 +21,6 @@ build-master:
 build:
   stage: build
   script:
-    - docker build --pull -f Dockerfile.11.0 -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG-11.0" .
-    - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG-11.0"
-    - docker build --pull -f Dockerfile.12.0 -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG-12.0" .
-    - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG-12.0"
     - docker build --pull -f Dockerfile.13.0 -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG-13.0" .
     - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG-13.0"
     - docker build --pull -f Dockerfile.daily -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG-daily" .
